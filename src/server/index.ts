@@ -8,4 +8,4 @@ app.use('/', (req, res) =>
   res.json(200).send({message: 'ok', uptime: process.uptime()}),
 )
 
-export {app}
+export {app as server}
