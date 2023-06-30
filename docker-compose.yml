@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  mysqllf:
+    image: mysql:5.7
+    platform: linux/amd64
+    env_file: ./.env
+    environment:
+      - MYSQL_USER=$MYSQL_USER
+      - MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
+      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DB
+    ports:
+      - $MYSQL_PORT:$MYSQL_PORT
+  server:
+    depends_on: 
+      - mysqllf
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    env_file: ./.env
+    ports:
+      - $PORT:$PORT
+    restart: always
