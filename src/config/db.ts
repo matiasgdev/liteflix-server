@@ -2,11 +2,11 @@ import {DataSource} from 'typeorm'
 import {getConfig} from '.'
 
 export const db = new DataSource({
-  type: 'mysql',
-  host: getConfig('MYSQL_HOST'),
-  username: getConfig('MYSQL_USER'),
-  port: Number(getConfig('MYSQL_PORT')),
-  password: getConfig('MYSQL_PASSWORD'),
-  database: getConfig('MYSQL_DB'),
+  type: getConfig('SQL_DB_TYPE') as 'mysql' | 'postgres',
+  host: getConfig('SQL_HOST'),
+  username: getConfig('SQL_USER'),
+  port: Number(getConfig('SQL_PORT')),
+  password: getConfig('SQL_PASSWORD'),
+  database: getConfig('SQL_DB'),
   synchronize: process.env.NODE_ENV === 'development',
 })

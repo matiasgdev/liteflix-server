@@ -5,12 +5,12 @@ services:
     platform: linux/amd64
     env_file: ./.env
     environment:
-      - MYSQL_USER=$MYSQL_USER
-      - MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
-      - MYSQL_PASSWORD=$MYSQL_PASSWORD
-      - MYSQL_DATABASE=$MYSQL_DB
+      - MYSQL_USER=$SQL_USER
+      - MYSQL_ROOT_PASSWORD=$SQL_PASSWORD
+      - MYSQL_PASSWORD=$SQL_PASSWORD
+      - MYSQL_DATABASE=$SQL_DB
     ports:
-      - $MYSQL_PORT:$MYSQL_PORT
+      - $MYSQL_PORT:$SQL_PORT
   server:
     depends_on: 
       - mysqllf

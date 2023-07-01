@@ -2,11 +2,12 @@ import dotenv from 'dotenv'
 
 interface ConfigMap {
   PORT: string
-  MYSQL_HOST: string
-  MYSQL_USER: string
-  MYSQL_PORT: string
-  MYSQL_PASSWORD: string
-  MYSQL_DB: string
+  SQL_HOST: string
+  SQL_USER: string
+  SQL_PORT: string
+  SQL_PASSWORD: string
+  SQL_DB: string
+  SQL_DB_TYPE: string
 }
 
 export const getConfig = (key: keyof ConfigMap): string => {
