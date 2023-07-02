@@ -10,7 +10,7 @@ services:
       - MYSQL_PASSWORD=$SQL_PASSWORD
       - MYSQL_DATABASE=$SQL_DB
     ports:
-      - $MYSQL_PORT:$SQL_PORT
+      - $SQL_PORT:$SQL_PORT
   server:
     depends_on: 
       - mysqllf
