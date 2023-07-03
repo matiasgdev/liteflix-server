@@ -1,6 +1,6 @@
 import listEndpoints from 'express-list-endpoints'
 import {getConfig} from './config'
-import {db} from './config/db'
+import db from './config/db'
 import {server} from './server'
 
 const port = getConfig('PORT')

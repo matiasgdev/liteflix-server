@@ -1,12 +1,6 @@
-import {DataSource} from 'typeorm'
-import {getConfig} from '.'
+/* eslint-disable import/no-default-export */
+import {DataSource, DataSourceOptions} from 'typeorm'
+import {connectionData} from '../../ormconfig'
 
-export const db = new DataSource({
-  type: getConfig('SQL_DB_TYPE') as 'mysql' | 'postgres',
-  host: getConfig('SQL_HOST'),
-  username: getConfig('SQL_USER'),
-  port: Number(getConfig('SQL_PORT')),
-  password: getConfig('SQL_PASSWORD'),
-  database: getConfig('SQL_DB'),
-  synchronize: process.env.NODE_ENV === 'development',
-})
+const db = new DataSource(connectionData as unknown as DataSourceOptions)
+export default db

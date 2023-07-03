@@ -1,49 +1,53 @@
 {
-  "name": "liteflix-back",
-  "version": "1.0.0",
-  "description": "Backend for Liteflix challengue",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "rimraf dist && tsc",
-    "start": "node dist/index.js",
-    "dev": "nodemon --watch '*.ts' --exec 'ts-node' src/index.ts",
-    "ts:check": "tsc --noEmit",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\" --fix",
-    "lint": "eslint --ignore-path .gitignore --ext .js,.ts ."
-  },
-  "keywords": [
-    "liteflix",
-    "challengue"
-  ],
-  "author": "matiasgdev",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/cors": "^2.8.13",
-    "@types/express": "^4.17.17",
-    "@types/express-list-endpoints": "^6.0.0",
-    "@types/node": "^20.3.2",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
-    "eslint": "^8.43.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-prettier": "^4.2.1",
-    "nodemon": "^2.0.22",
-    "prettier": "^2.8.8",
-    "rimraf": "^5.0.1",
-    "ts-node": "^10.9.1",
-    "ts-node-dev": "^2.0.0",
-    "@types/multer": "^1.4.7",
-    "typescript": "^5.1.6"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "express-list-endpoints": "^6.0.0",
-    "multer": "^1.4.5-lts.1",
-    "mysql2": "^3.4.3",
-    "pg": "^8.11.1",
-    "typeorm": "^0.3.17"
-  }
+   "name": "liteflix-back",
+   "version": "1.0.0",
+   "description": "Backend for Liteflix challengue",
+   "main": "dist/index.js",
+   "scripts": {
+      "build": "rimraf dist && tsc",
+      "start": "node dist/index.js",
+      "dev": "nodemon --watch '*.ts' --exec 'ts-node' src/index.ts",
+      "ts:check": "tsc --noEmit",
+      "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\" --fix",
+      "lint": "eslint --ignore-path .gitignore --ext .js,.ts .",
+      "typeorm": "ts-node ./node_modules/typeorm/cli.js -d ./src/config/db.ts",
+      "migration:create": "yarn typeorm migration:generate -c migration --name",
+      "migration:run": "yarn typeorm migration:run"
+   },
+   "keywords": [
+      "liteflix",
+      "challengue"
+   ],
+   "author": "matiasgdev",
+   "license": "ISC",
+   "devDependencies": {
+      "@types/cors": "^2.8.13",
+      "@types/express": "^4.17.17",
+      "@types/express-list-endpoints": "^6.0.0",
+      "@types/multer": "^1.4.7",
+      "@types/node": "^20.3.2",
+      "@typescript-eslint/eslint-plugin": "^5.60.1",
+      "@typescript-eslint/parser": "^5.60.1",
+      "eslint": "^8.43.0",
+      "eslint-config-prettier": "^8.8.0",
+      "eslint-plugin-import": "^2.27.5",
+      "eslint-plugin-prettier": "^4.2.1",
+      "nodemon": "^2.0.22",
+      "prettier": "^2.8.8",
+      "rimraf": "^5.0.1",
+      "ts-node": "^10.9.1",
+      "ts-node-dev": "^2.0.0",
+      "typescript": "^5.1.6"
+   },
+   "dependencies": {
+      "cors": "^2.8.5",
+      "dotenv": "^16.3.1",
+      "express": "^4.18.2",
+      "express-list-endpoints": "^6.0.0",
+      "multer": "^1.4.5-lts.1",
+      "mysql2": "^3.4.3",
+      "pg": "^8.11.1",
+      "reflect-metadata": "^0.1.13",
+      "typeorm": "^0.3.17"
+   }
 }

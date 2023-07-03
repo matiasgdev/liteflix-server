@@ -1,6 +1,7 @@
+import 'reflect-metadata'
 import express from 'express'
 import cors from 'cors'
-import {db} from '../config/db'
+import db from '../config/db'
 import {createMoviesRouter} from '../routes/movies'
 
 const app = express()
