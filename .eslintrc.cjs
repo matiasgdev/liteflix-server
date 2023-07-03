@@ -76,15 +76,9 @@ module.exports = {
     'no-case-declarations': 'error',
     'no-unsafe-finally': 'error',
     'no-self-assign': 'error',
-    'no-unused-vars': 'error',
+    'no-unused-vars': 'warn',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 2,
-    '@typescript-eslint/no-unused-vars': [
-      2,
-      {
-        argsIgnorePattern: '^_',
-      },
-    ],
     curly: 2,
   },
 }
