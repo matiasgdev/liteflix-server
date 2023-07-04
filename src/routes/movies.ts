@@ -1,33 +1,15 @@
 import path from 'path'
-import {readFileSync, unlinkSync} from 'fs'
+import {readFileSync, unlink} from 'fs'
 import {Router} from 'express'
-import multer from 'multer'
 import db from '../config/db'
 import {Movie} from '../entity/Movie'
-
-const storeImageMiddleware = multer({
-  storage: multer.diskStorage({
-    destination: './assets/images',
-    filename(req, file, callback) {
-      return callback(
-        null,
-        `${file.originalname.split('.')[0]}-${Date.now()}${path.extname(
-          file.originalname,
-        )}`,
-      )
-    },
-  }),
-}).single('image')
+import {storeImageMiddleware} from '../middlewares/stora-image.middleware'
 
 const router = Router()
 
 const readImageFile = (fileSrc: string) => {
   const bitmap = readFileSync(fileSrc)
   return Buffer.from(bitmap)
-}
-
-const removeLocalFile = (fileSrc: string) => {
-  unlinkSync(fileSrc)
 }
 
 export const createMoviesRouter = () => {
@@ -51,9 +33,9 @@ export const createMoviesRouter = () => {
       .values([{title: req.body.title, image: buffer}])
       .execute()
 
-    removeLocalFile(filePath)
-
-    return res.status(201)
+    unlink(filePath, () => {
+      res.status(201).end()
+    })
   })
   return router
 }
