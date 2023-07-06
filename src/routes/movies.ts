@@ -4,6 +4,7 @@ import {Router} from 'express'
 import db from '../config/db'
 import {Movie} from '../entity/Movie'
 import {storeImageMiddleware} from '../middlewares/stora-image.middleware'
+import {randomRate} from '../utils/randomRate'
 
 const router = Router()
 
@@ -30,7 +31,13 @@ export const createMoviesRouter = () => {
       .createQueryBuilder()
       .insert()
       .into(Movie)
-      .values([{title: req.body.title, image: buffer}])
+      .values([
+        {
+          title: req.body.title,
+          image: buffer,
+          rate: randomRate(),
+        },
+      ])
       .execute()
 
     unlink(filePath, () => {

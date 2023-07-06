@@ -7,7 +7,7 @@ export const connectionData = {
   port: Number(getConfig('SQL_PORT')),
   password: getConfig('SQL_PASSWORD'),
   database: getConfig('SQL_DB'),
-  synchronize: false,
+  synchronize: true,
   extra: {charset: 'utf8mb4_unicode_ci'},
   name: 'migration',
   migrations: ['./src/migration/*{.ts,.js}'],

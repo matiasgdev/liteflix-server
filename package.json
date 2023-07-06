@@ -12,7 +12,8 @@
       "lint": "eslint --ignore-path .gitignore --ext .js,.ts .",
       "typeorm": "ts-node ./node_modules/typeorm/cli.js -d ./src/config/db.ts",
       "migration:create": "yarn typeorm migration:generate -c migration --name",
-      "migration:run": "yarn typeorm migration:run"
+      "migration:run": "yarn typeorm migration:run",
+      "migration:revert": "yarn typeorm migration:revert"
    },
    "keywords": [
       "liteflix",

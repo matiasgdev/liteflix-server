@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from 'typeorm'
 
-export class Movies1688410919636 implements MigrationInterface {
+export class Movies1688587308170 implements MigrationInterface {
   async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -17,7 +17,16 @@ export class Movies1688410919636 implements MigrationInterface {
           },
           {
             name: 'image',
-            type: 'buffer',
+            type: 'longblob',
+          },
+          {
+            name: 'rate',
+            type: 'float',
+          },
+          {
+            name: 'created_at',
+            type: 'timestamp',
+            default: 'now()',
           },
         ],
       }),
