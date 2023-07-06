@@ -8,7 +8,16 @@ export const connectionData = {
   password: getConfig('SQL_PASSWORD'),
   database: getConfig('SQL_DB'),
   synchronize: true,
-  extra: {charset: 'utf8mb4_unicode_ci'},
+  extra: {
+    charset: 'utf8mb4_unicode_ci',
+    ...(process.env.NODE_ENV === 'development'
+      ? {
+          ssl: {
+            rejectUnauthorized: false,
+          },
+        }
+      : {}),
+  },
   name: 'migration',
   migrations: ['./src/migration/*{.ts,.js}'],
   entities: ['./src/entity/*{.ts,.js}'],

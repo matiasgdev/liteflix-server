@@ -3,18 +3,17 @@ import {randomRate} from '../utils/randomRate'
 
 @Entity({name: 'movies'})
 export class Movie {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn()
   id: number
 
   @Column()
   title: string
 
-  @Column({type: 'longblob', nullable: false})
+  @Column({type: 'bytea', nullable: false})
   image: Buffer
 
   @Column({
     type: 'float',
-    nullable: false,
     default: randomRate(),
   })
   rate: number

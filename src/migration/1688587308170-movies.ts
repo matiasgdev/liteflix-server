@@ -1,14 +1,14 @@
 import {MigrationInterface, QueryRunner, Table} from 'typeorm'
 
 export class Movies1688587308170 implements MigrationInterface {
-  async up(queryRunner: QueryRunner): Promise<void> {
+  public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
         name: 'movies',
         columns: [
           {
             name: 'id',
-            type: 'int',
+            type: 'serial',
             isPrimary: true,
           },
           {
@@ -17,7 +17,7 @@ export class Movies1688587308170 implements MigrationInterface {
           },
           {
             name: 'image',
-            type: 'longblob',
+            type: 'bytea',
           },
           {
             name: 'rate',
@@ -34,7 +34,7 @@ export class Movies1688587308170 implements MigrationInterface {
     )
   }
 
-  async down(queryRunner: QueryRunner): Promise<void> {
+  public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropTable('movies')
   }
 }
