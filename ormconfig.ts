@@ -19,8 +19,8 @@ export const connectionData = {
       : {}),
   },
   name: 'migration',
-  migrations: ['./src/migration/*{.ts,.js}'],
-  entities: ['./src/entity/*{.ts,.js}'],
+  migrations: [__dirname + '/src/migration/*{.ts,.js}'],
+  entities: [__dirname + '/src/entity/*{.ts,.js}'],
   cli: {
     migrationsDir: 'src/migration',
   },
