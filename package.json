@@ -2,7 +2,7 @@
    "name": "liteflix-back",
    "version": "1.0.0",
    "description": "Backend for Liteflix challengue",
-   "main": "dist/index.js",
+   "main": "dist/src/index.js",
    "scripts": {
       "build": "rimraf dist && tsc",
       "start": "node dist/src/index.js",
