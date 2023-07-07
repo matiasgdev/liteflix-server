@@ -1,6 +1,6 @@
 ## This is a API server for [Liteflix frontend](https://github.com/matiasgdev/liteflix)
 
-Open [https://liteflix-server.onrender.com/health](https://liteflix-server.onrender.com) to see deployed API.
+Open [https://liteflix-server.onrender.com/health](https://liteflix-server.onrender.com/health) to see deployed API.
 
 
 ### /POST movie
