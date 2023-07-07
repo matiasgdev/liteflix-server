@@ -6,6 +6,7 @@ import {Movie} from '../entity/Movie'
 import {storeImageMiddleware} from '../middlewares/stora-image.middleware'
 import {randomRate} from '../utils/randomRate'
 
+const mimeTypeRegex = /^image\/(jpeg|png|webp|gif|bmp)$/
 const router = Router()
 
 const readImageFile = (fileSrc: string) => {
@@ -24,10 +25,14 @@ export const createMoviesRouter = () => {
   })
 
   router.post('/', storeImageMiddleware, async (req, res) => {
+    if (!mimeTypeRegex.test(req.file?.mimetype as string)) {
+      res.status(400).json({message: `Invalid image format provided`})
+      return
+    }
     const filePath = path.resolve(process.cwd(), req.file?.path as string)
     const buffer = readImageFile(filePath)
 
-    await db
+    const movie = await db
       .createQueryBuilder()
       .insert()
       .into(Movie)
@@ -41,7 +46,9 @@ export const createMoviesRouter = () => {
       .execute()
 
     unlink(filePath, () => {
-      res.status(201).end()
+      res
+        .status(200)
+        .json({...movie.raw[0], title: req.body.title, image: buffer})
     })
   })
   return router
